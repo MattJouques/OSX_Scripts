@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# Script to start and stop vm services
+vmrun list
+
+if [[ $2 == winxp ]];then
+	if [[ $1 == stop ]]; then
+		launchctl unload -w /Library/LaunchDaemons/com.omnigroup.vm.winXP.plist 
+	else
+		launchctl load -w /Library/LaunchDaemons/com.omnigroup.vm.winXP.plist
+	fi
+fi
+if [[ $2 == winx ]];then
+        if [[ $1 == stop ]];then
+                launchctl unload -w /Library/LaunchDaemons/com.omnigroup.vm.winX.plist
+        else
+                launchctl load -w /Library/LaunchDaemons/com.omnigroup.vm.winX.plist
+        fi
+fi
+if [[ $2 == win7 ]];then
+        if [[ $1 == stop ]];then
+                launchctl unload -w /Library/LaunchDaemons/com.omnigroup.vm.win7.plist
+        else
+                launchctl load -w /Library/LaunchDaemons/com.omnigroup.vm.win7.plist
+        fi
+fi
+if [[ $2 == winsvr ]];then
+        if [[ $1 == stop ]];then
+                launchctl unload -w /Library/LaunchDaemons/com.omnigroup.vm.winsvr.plist
+        else
+                launchctl load -w /Library/LaunchDaemons/com.omnigroup.vm.winsvr.plist
+        fi
+fi
+
+if [[ $2 == msploit2 ]];then
+        if [[ $1 == stop ]]; then
+                launchctl unload -w /Library/LaunchDaemons/com.omnigroup.vm.msploit2.plist
+        else
+                launchctl load -w /Library/LaunchDaemons/com.omnigroup.vm.msploit2.plist
+        fi
+fi
+vmrun list

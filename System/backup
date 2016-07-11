@@ -1,0 +1,28 @@
+#!/bin/bash
+#
+#       Script to run backup of the system and Copy to Backup Server
+#
+
+# Variables
+LHost="Alpha"
+user="backup"
+password="_backup:1"
+RHost="Omega.local"
+
+# Send output to file
+
+logfile=~/Scripts/Log/backup.log
+exec > $logfile 2>&1
+
+echo "Backup Script Started at" $(date +%F_%T) "for" $LHost
+
+# Mount the Backup
+mount_afp afp://$user:$password@$RHost/Backups ~/Backup
+
+# Backup mysql
+mysqldump -u $user --all-databases | gzip > ~/Backup/$LHost/MySql/mysql-$(date +"%Y_%m_%d_%H_%M_%S").sql.gz
+
+
+# Unmount the Drive
+sleep 30
+umount ~/Backup
