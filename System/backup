@@ -1,12 +1,12 @@
 #!/bin/bash
 #
-#       Script to run backup of the system and Copy to Backup Server
+#	Script to run backup of the system and Copy to Backup Server
 #
 
 # Variables
 LHost="Alpha"
 user="backup"
-password="_backup:1"
+password=""
 RHost="Omega.local"
 
 # Send output to file
